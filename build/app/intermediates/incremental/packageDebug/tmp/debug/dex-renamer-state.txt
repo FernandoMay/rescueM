@@ -1,0 +1,4 @@
+#Sun Jul 07 10:37:45 CDT 2019
+base.0=/home/maydarrell/hackapalooza/rescuem/build/app/intermediates/transforms/dexMerger/debug/0
+path.0=classes.dex
+renamed.0=classes.dex
