@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'dart:io';
 import 'package:firebase_messaging/firebase_messaging.dart';
 
-final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
-
 void main() => runApp(MyApp());
+
+@override
+void initState() {
+  new FirebaseNotifications().setUpFirebase();
+}
 
 class MyApp extends StatelessWidget {
   static const String _title = 'Rescue Me';
@@ -28,39 +32,29 @@ class MyStatefulWidget extends StatefulWidget {
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   int _selectedIndex = 0;
 
-  @override
-  void initState() {
-    super.initState();
-    _firebaseMessaging.configure(
-      onMessage: (Map<String, dynamic> message) {
-        print('on message $message');
-      },
-      onResume: (Map<String, dynamic> message) {
-        print('on resume $message');
-      },
-      onLaunch: (Map<String, dynamic> message) {
-        print('on launch $message');
-      },
-    );
-    _firebaseMessaging.requestNotificationPermissions(
-        const IosNotificationSettings(sound: true, badge: true, alert: true));
-    _firebaseMessaging.getToken().then((token){
-      print(token);
-    });
-  }
+  
 
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   final List<Widget> _widgetOptions = <Widget>[
     Container(
-      child: Row(
-        children: <Widget>[
-          Container(
-            child: Center(
-              child: Text('T'),
-            ),
-          ),
-        ],
+      child: Center(
+        child: Text('H'),
+      ),
+    ),
+    Container(
+      child: Center(
+        child: Text('R'),
+      ),
+    ),
+    Container(
+      child: Center(
+        child: Text('G'),
+      ),
+    ),
+    Container(
+      child: Center(
+        child: Text('B'),
       ),
     ),
   ];
@@ -75,8 +69,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Rescue Me'),
-        backgroundColor: Color(0x0A2653),
+        title: const Text('RescueMe'),
+        backgroundColor: Colors.indigoAccent,
       ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
@@ -101,10 +95,51 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Color(0x4A86E8),
-        unselectedItemColor: Colors.white,
+        selectedItemColor: Colors.blueGrey,
+        unselectedItemColor: Colors.cyan,
         onTap: _onItemTapped,
+        backgroundColor: Colors.blueAccent,
       ),
+      backgroundColor: Colors.indigoAccent,
     );
+  }
+}
+
+class FirebaseNotifications {
+  FirebaseMessaging _firebaseMessaging;
+
+  void setUpFirebase() {
+    _firebaseMessaging = FirebaseMessaging();
+    firebaseCloudMessaging_Listeners();
+
+  }
+
+  void firebaseCloudMessaging_Listeners() {
+    if (Platform.isIOS) iOS_Permission();
+
+    _firebaseMessaging.getToken().then((token) {
+      print(token);
+    });
+
+    _firebaseMessaging.configure(
+      onMessage: (Map<String, dynamic> message) async {
+        print('on message $message');
+      },
+      onResume: (Map<String, dynamic> message) async {
+        print('on resume $message');
+      },
+      onLaunch: (Map<String, dynamic> message) async {
+        print('on launch $message');
+      },
+    );
+  }
+
+  void iOS_Permission() {
+    _firebaseMessaging.requestNotificationPermissions(
+        IosNotificationSettings(sound: true, badge: true, alert: true));
+    _firebaseMessaging.onIosSettingsRegistered
+        .listen((IosNotificationSettings settings) {
+      print("Settings registered: $settings");
+    });
   }
 }
