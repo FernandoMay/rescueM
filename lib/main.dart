@@ -232,7 +232,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         onTap: _onItemTapped,
         backgroundColor: Colors.blueAccent,
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.blueGrey,
     );
   }
 }
