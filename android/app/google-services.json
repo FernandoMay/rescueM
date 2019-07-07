@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "527406508631",
+    "firebase_url": "https://rescueme-90ae8.firebaseio.com",
+    "project_id": "rescueme-90ae8",
+    "storage_bucket": "rescueme-90ae8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:527406508631:android:1da8edf5ff627dac",
+        "android_client_info": {
+          "package_name": "com.example.rescuem"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "527406508631-bor1n0v41uraa3amr7si1nq9r6682e3s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCa-uvaAMhXGQh0k6oKNyWemhLzL7mnwEs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "527406508631-bor1n0v41uraa3amr7si1nq9r6682e3s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

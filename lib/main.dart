@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
+final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
 
 void main() => runApp(MyApp());
 
@@ -26,24 +28,40 @@ class MyStatefulWidget extends StatefulWidget {
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   int _selectedIndex = 0;
 
+  @override
+  void initState() {
+    super.initState();
+    _firebaseMessaging.configure(
+      onMessage: (Map<String, dynamic> message) {
+        print('on message $message');
+      },
+      onResume: (Map<String, dynamic> message) {
+        print('on resume $message');
+      },
+      onLaunch: (Map<String, dynamic> message) {
+        print('on launch $message');
+      },
+    );
+    _firebaseMessaging.requestNotificationPermissions(
+        const IosNotificationSettings(sound: true, badge: true, alert: true));
+    _firebaseMessaging.getToken().then((token){
+      print(token);
+    });
+  }
+
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Home',
-      style: optionStyle,
-    ),
-    Text(
-      'User',
-      style: optionStyle,
-    ),
-    Text(
-      'Map',
-      style: optionStyle,
-    ),
-    Text(
-      'Coordination',
-      style: optionStyle,
+  final List<Widget> _widgetOptions = <Widget>[
+    Container(
+      child: Row(
+        children: <Widget>[
+          Container(
+            child: Center(
+              child: Text('T'),
+            ),
+          ),
+        ],
+      ),
     ),
   ];
 
@@ -90,4 +108,3 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     );
   }
 }
-
