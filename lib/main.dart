@@ -62,7 +62,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         Container(
           height: 350,
           color: Colors.blue[600],
-          child: const Center(child: Text('Lo demas',style: optionStyle,)),
+          child: const Center(child: Text('-----',style: optionStyle,)),
         ),
       ],
     ),
@@ -85,12 +85,12 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         Container(
           height: 170,
           color: Colors.white,
-          child: const Center(child: Text('Datos',style: optionStyle2,)),
+          child: const Center(child: Text('Usuario',style: optionStyle2,)),
         ),
         Container(
           height: 170,
           color: Colors.white,
-          child: const Center(child: Text('Mas datos',style: optionStyle2,)),
+          child: const Center(child: Text('Datos de Usuario',style: optionStyle2,)),
         ),
       ],
     ),
@@ -116,7 +116,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       child: Center(
         child: Text(
           'Map',
-          style: optionStyle,
+          style: optionStyle2,
         ),
       ),
     ),
@@ -131,7 +131,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             children: <Widget>[
               Container(
                 height: 100,
-                width: 50,
+                width: 70,
                 color: Colors.cyan[100],
                 child: Center(
                   child: Icon(
@@ -142,7 +142,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
               ),
               Container(
                 height: 100,
-                width: 50,
+                width: 70,
                 color: Colors.cyan[200],
                 child: Center(
                   child: Icon(
@@ -153,7 +153,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
               ),
               Container(
                 height: 100,
-                width: 50,
+                width: 70,
                 color: Colors.cyan[300],
                 child: Center(
                   child: Icon(
@@ -164,7 +164,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
               ),
               Container(
                 height: 100,
-                width: 50,
+                width: 70,
                 color: Colors.cyan[400],
                 child: Center(
                   child: Icon(
@@ -184,7 +184,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         Container(
           height: 350,
           color: Colors.blue[350],
-          child: const Center(child: Text('Lo demas',style: optionStyle,)),
+          child: const Center(child: Text('',style: optionStyle,)),
         ),
       ],
     ),
